@@ -1,3 +1,8 @@
 nav{
     background: #803a49;
 }
+
+nav .brand-logo{
+    font-weight: 700;
+    /* color: black; */
+}
