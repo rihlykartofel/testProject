@@ -9,5 +9,6 @@ $router->setBasePath('/');
 
 $router->get('/', 'Index@index');
 $router->get('/(\d+)', 'Index@show');
+$router->set404('Error@notFound');
 
 $router->run();
