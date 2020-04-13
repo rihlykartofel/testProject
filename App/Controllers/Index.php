@@ -6,7 +6,7 @@ class Index extends AbstractController
 {
     public function index()
     {
-        $this->render('base.html');
+        $this->render('index.html');
 
         return true;
     }

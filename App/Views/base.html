@@ -2,64 +2,40 @@
 <html>
 	<head>
 		{% block head %}
-			<link
-			href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+			<link href="/Public/css/material-icons.css" rel="stylesheet">
 			<link type="text/css" rel="stylesheet" href="/Public/css/materialize.css" media="screen,projection"/>
-			<link
-			type="text/css" rel="stylesheet" href="/Public/css/style.css"/>
+			<link type="text/css" rel="stylesheet" href="/Public/css/style.css"/>
 
 			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		{% endblock %}
 	</head>
 	<body>
-		{% block nav %}
-			<ul id='dropdown1' class='dropdown-content'>
-				<li>
-					<a href="#!">one</a>
-				</li>
-				<li>
-					<a href="#!">two</a>
-				</li>
-				<li class="divider" tabindex="-1"></li>
-				<li>
-					<a href="#!">three</a>
-				</li>
-				<li>
-					<a href="#!">
-						<i class="material-icons">view_module</i>four</a>
-				</li>
-				<li>
-					<a href="#!">
-						<i class="material-icons">cloud</i>five</a>
-				</li>
-			</ul>
+		{% block beforeNav %}{% endblock %}
 
 			<nav>
 				<div class="container">
 					<div class="nav-wrapper">
-						<a href="#" class="brand-logo">Тест</a>
+						<a href="#" class="brand-logo">{{ caption }}</a>
+
 						<ul id="nav-mobile" class="right hide-on-med-and-down">
-							<li>
-								<a href="/123">Стр. 1</a>
-							</li>
-							<li>
-								<a href="/3214">Стр. 2</a>
-							</li>
-							<li>
-								<a href="/4345">Стр. 3</a>
-							</li>
-							<li>
-								<a class="dropdown-trigger" href="#!" data-target="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i>
-								</a>
-							</li>
+							{% for link in navigation %}
+								<li>
+									<a href="{{ link.href }}">{{ link.name }}</a>
+								</li>
+							{% endfor %}
 						</ul>
+						{{ var }}
+						{% block auxNav %}
+						{% endblock %}
 					</div>
 				</div>
 			</nav>
-        {% endblock %}
         
-		<div id="content"> {% block content %}{% endblock %}
-			</div>
+		<div id="content"> 
+            {% block content %}
+            {% endblock %}
+        </div>
+        
 			<div id="footer">
 				{% block footer %}
 					<script type="text/javascript" src="/Public/js/materialize.js"></script>

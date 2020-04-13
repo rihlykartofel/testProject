@@ -13,6 +13,7 @@ class AbstractController
     {
         $loader = new \Twig\Loader\FilesystemLoader(APP_DIR . '/views');
         $this->twig = new \Twig\Environment($loader);
+        $this->twig->addGlobal('caption', 'Тест');
     }
 
     protected function load($name)
