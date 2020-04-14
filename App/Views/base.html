@@ -2,7 +2,8 @@
 <html>
 	<head>
 		{% block head %}
-			<link href="/Public/css/material-icons.css" rel="stylesheet">
+			<!-- <link href="/Public/css/material-icons.css" rel="stylesheet"> -->
+			<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 			<link type="text/css" rel="stylesheet" href="/Public/css/materialize.css" media="screen,projection"/>
 			<link type="text/css" rel="stylesheet" href="/Public/css/style.css"/>
 
@@ -10,32 +11,45 @@
 		{% endblock %}
 	</head>
 	<body>
-		{% block beforeNav %}{% endblock %}
 
-			<nav>
-				<div class="container">
-					<div class="nav-wrapper">
-						<a href="#" class="brand-logo">{{ caption }}</a>
+			{% for num, link in topNav %}
+				{% if link.dropdown is iterable %}
+				<ul id='dropdown{{num }}' class='dropdown-content'>
+					{% for ddlink in link.dropdown %}
+						<li><a href="{{ ddlink.href }}">{{ ddlink.name }}</a></li>
+					{% endfor %}
+				</ul>
+				{% endif %}
+			{% endfor %}
 
-						<ul id="nav-mobile" class="right hide-on-med-and-down">
-							{% for link in topNav %}
-								<li>
-									<a href="{{ link.href }}">{{ link.name }}</a>
-								</li>
-							{% endfor %}
-						</ul>
-						{{ var }}
-						{% block auxNav %}
-						{% endblock %}
-					</div>
-				</div>
-			</nav>
-        
-		<div id="content"> 
-            {% block content %}
-            {% endblock %}
-        </div>
-        
+		<nav>
+			<!-- <div class="container"> -->
+			<div class="nav-wrapper">
+				<a href="#" class="brand-logo">{{ caption }}</a>
+
+				<ul id="nav-mobile" class="right hide-on-med-and-down">
+					{% for num, link in topNav %}
+						
+						<li>
+						{% if link.dropdown is iterable %}
+							<a class='dropdown-trigger' href='#' data-target='dropdown{{ num }}'>{{ link.name }}
+								<i class="material-icons right">arrow_drop_down</i>
+							</a>
+						{% else %}
+							<a href="{{ link.href }}">{{ link.name }}</a>
+						{% endif %}
+						</li>
+						
+					{% endfor %}
+				</ul>
+				{% block auxNav %}{% endblock %}
+			</div>
+			<!-- </div> -->
+		</nav>
+
+		<div id="content"> {% block content %}{% endblock %}
+			</div>
+
 			<div id="footer">
 				{% block footer %}
 					<script type="text/javascript" src="/Public/js/materialize.js"></script>
@@ -44,4 +58,3 @@
 			</div>
 		</body>
 	</html>
-

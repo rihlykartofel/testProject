@@ -1,6 +1,5 @@
 <?php
 
-use App\Controllers\IndexController;
 use Bramus\Router\Router;
 
 $router = new Router();

@@ -3,6 +3,8 @@ nav{
 }
 
 nav .brand-logo{
+    margin-left: 5vw;
     font-weight: 700;
+    
     /* color: black; */
 }
