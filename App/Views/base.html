@@ -2,8 +2,7 @@
 <html>
 	<head>
 		{% block head %}
-			<!-- <link href="/Public/css/material-icons.css" rel="stylesheet"> -->
-			<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+			<link href="/Public/css/material-icons.css" rel="stylesheet">
 			<link type="text/css" rel="stylesheet" href="/Public/css/materialize.css" media="screen,projection"/>
 			<link type="text/css" rel="stylesheet" href="/Public/css/style.css"/>
 
@@ -12,34 +11,37 @@
 	</head>
 	<body>
 
-			{% for num, link in topNav %}
-				{% if link.dropdown is iterable %}
+		{% for num, link in topNav %}
+			{% if link.dropdown is iterable %}
 				<ul id='dropdown{{num }}' class='dropdown-content'>
 					{% for ddlink in link.dropdown %}
-						<li><a href="{{ ddlink.href }}">{{ ddlink.name }}</a></li>
+						<li>
+							<a href="{{ ddlink.href }}">{{ ddlink.name }}</a>
+						</li>
 					{% endfor %}
 				</ul>
-				{% endif %}
-			{% endfor %}
+			{% endif %}
+		{% endfor %}
 
 		<nav>
 			<!-- <div class="container"> -->
 			<div class="nav-wrapper">
+				<a href="#" data-target="slide-out" class="top-nav sidenav-trigger show-on-large"><i class="material-icons md-36 md-light">menu</i></a>
 				<a href="#" class="brand-logo">{{ caption }}</a>
 
 				<ul id="nav-mobile" class="right hide-on-med-and-down">
 					{% for num, link in topNav %}
-						
+
 						<li>
-						{% if link.dropdown is iterable %}
-							<a class='dropdown-trigger' href='#' data-target='dropdown{{ num }}'>{{ link.name }}
-								<i class="material-icons right">arrow_drop_down</i>
-							</a>
-						{% else %}
-							<a href="{{ link.href }}">{{ link.name }}</a>
-						{% endif %}
+							{% if link.dropdown is iterable %}
+								<a class='dropdown-trigger' href='#' data-target='dropdown{{ num }}'>{{ link.name }}
+									<i class="material-icons right">arrow_drop_down</i>
+								</a>
+							{% else %}
+								<a href="{{ link.href }}">{{ link.name }}</a>
+							{% endif %}
 						</li>
-						
+
 					{% endfor %}
 				</ul>
 				{% block auxNav %}{% endblock %}
@@ -47,14 +49,53 @@
 			<!-- </div> -->
 		</nav>
 
-		<div id="content"> {% block content %}{% endblock %}
-			</div>
+		<main>
+			
+			<ul id="slide-out" class="sidenav">
+				<li><a href="#!">First Sidebar Link</a></li>
+				<li><a href="#!" onclick="load('content','/test');">Second Sidebar Link</a></li>
+				<li class="no-padding">
+				  <ul class="collapsible collapsible-accordion">
+					<li>
+					  <a class="collapsible-header">Dropdown<i class="material-icons">arrow_drop_down</i></a>
+					  <div class="collapsible-body">
+						<ul>
+						  <li><a href="#!">First</a></li>
+						  <li><a href="#!">Second</a></li>
+						  <li><a href="#!">Third</a></li>
+						  <li><a href="#!">Fourth</a></li>
+						</ul>
+					  </div>
+					</li>
+				  </ul>
+				</li>
+			  </ul>
 
-			<div id="footer">
-				{% block footer %}
-					<script type="text/javascript" src="/Public/js/materialize.js"></script>
-					<script type="text/javascript" src="/Public/js/init.js"></script>
-				{% endblock %}
-			</div>
-		</body>
-	</html>
+			  
+
+			  <div class="" id="content">
+
+				<div class="preloader-wrapper big active">
+					<div class="spinner-layer spinner-blue-only">
+					  <div class="circle-clipper left">
+						<div class="circle"></div>
+					  </div><div class="gap-patch">
+						<div class="circle"></div>
+					  </div><div class="circle-clipper right">
+						<div class="circle"></div>
+					  </div>
+					</div>
+				  </div>
+
+			  </div>
+			{% block content %}{% endblock %}
+		</main>
+
+		<div id="footer">
+			{% block footer %}
+				<script type="text/javascript" src="/Public/js/materialize.js"></script>
+				<script type="text/javascript" src="/Public/js/init.js"></script>
+			{% endblock %}
+		</div>
+	</body>
+</html>

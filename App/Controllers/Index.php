@@ -11,6 +11,13 @@ class Index extends AbstractController
         return true;
     }
 
+    public function test()
+    {
+        $this->render('content.html');
+
+        return true;
+    }
+
     public function show($string)
     {
         dd($string);

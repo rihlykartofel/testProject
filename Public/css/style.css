@@ -1,10 +1,48 @@
-nav{
+nav {
     background: #803a49;
 }
 
-nav .brand-logo{
-    margin-left: 5vw;
+.brand-logo {
+    /* margin-left: 5vw; */
     font-weight: 700;
-    
     /* color: black; */
+}
+
+.sidenav-trigger {
+    margin-left: 10px;
+}
+
+.material-icons.md-light {
+    color: rgb(201, 201, 201);
+}
+
+.material-icons.md-18 {
+    font-size: 18px;
+}
+
+.material-icons.md-24 {
+    font-size: 24px;
+}
+
+.material-icons.md-36 {
+    font-size: 36px;
+}
+
+.material-icons.md-48 {
+    font-size: 48px;
+}
+
+.preloader-wrapper {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+}
+
+.loaded_hiding .preloader-wrapper {
+    transition: 0.3s opacity;
+    opacity: 0;
+}
+
+.loaded .preloader-wrapper {
+    display: none;
 }
