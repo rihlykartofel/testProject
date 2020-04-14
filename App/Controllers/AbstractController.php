@@ -14,6 +14,43 @@ class AbstractController
         $loader = new \Twig\Loader\FilesystemLoader(APP_DIR . '/views');
         $this->twig = new \Twig\Environment($loader);
         $this->twig->addGlobal('caption', 'Тест');
+
+        $this->getTopNav();
+    }
+
+    private function getTopNav()
+    {
+        define('TNAV_DIR', BASE_DIR . '/Config/Navigation/TopNav/');
+
+        $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+        $uri = substr($uri, 1);
+
+        $segments = explode('/',$uri);
+        $length = count($segments);
+
+        for ($i = 0; $i < $length; ++$i)
+        {
+            $filename = '';
+
+            foreach ($segments as $segment)
+            {
+                $filename .= $segment . '.';
+            } 
+
+            $filename .= 'nav';
+            $path = TNAV_DIR . $filename;
+
+            $exist = file_exists($path);
+
+            if ($exist)
+            {
+                $topNav = require $path;
+                $this->twig->addGlobal('topNav', $topNav);
+                return;  
+            } 
+            else array_pop($segments);
+
+        }     
     }
 
     protected function load($name)
