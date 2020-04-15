@@ -9,7 +9,10 @@ $router->setBasePath('/');
 $router->get('/', 'Index@index');
 $router->get('/(\d+)', 'Index@show');
 $router->get('/admin/(\d+)', 'Index@index');
-$router->get('/test', 'Index@test');
+
+$router->post('/test', 'Index@test');
+$router->post('/test2', 'Index@test2');
+
 $router->set404('Error@notFound');
 
 $router->run();

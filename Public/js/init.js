@@ -15,20 +15,27 @@ document.addEventListener('DOMContentLoaded', function() {
     let instances = M.Sidenav.init(elems, options);
   });
 
-  document.addEventListener('DOMContentLoaded', function() {
+  window.onload = hidePreloader;
+
+  function hidePreloader()
+  {
     document.body.classList.add('loaded_hiding');
     window.setTimeout(function () {
       document.body.classList.add('loaded');
       document.body.classList.remove('loaded_hiding');
     }, 500);
-  });
+  }
 
   function load(target, url) {
     var elem = document.getElementById(target);
     var r = new XMLHttpRequest();
-    r.open("GET", url, true);
+    
+    document.body.classList.remove('loaded');
+
+    r.open("POST", url, true);
     r.onreadystatechange = function () {
       if (r.readyState != 4 || r.status != 200) return;
+      if (this.readyState == 4 && this.status == 200) hidePreloader();
       elem.innerHTML = r.responseText;
     };
     r.send();

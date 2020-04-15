@@ -54,6 +54,16 @@
 			<ul id="slide-out" class="sidenav">
 				<li><a href="#!">First Sidebar Link</a></li>
 				<li><a href="#!" onclick="load('content','/test');">Second Sidebar Link</a></li>
+				<li><a href="#!" onclick="load('content','/test2');">First Sidebar Link</a></li>
+				<li><a href="#!" onclick="load('content','/test');">Second Sidebar Link</a></li>
+				<li><a href="#!">First Sidebar Link</a></li>
+				<li><a href="#!" onclick="load('content','/test');">Second Sidebar Link</a></li>
+				<li><a href="#!">First Sidebar Link</a></li>
+				<li><a href="#!" onclick="load('content','/test');">Second Sidebar Link</a></li>
+				<li><a href="#!">First Sidebar Link</a></li>
+				<li><a href="#!" onclick="load('content','/test');">Second Sidebar Link</a></li>
+
+
 				<li class="no-padding">
 				  <ul class="collapsible collapsible-accordion">
 					<li>
@@ -69,25 +79,59 @@
 					</li>
 				  </ul>
 				</li>
+
+				<li class="no-padding">
+					<ul class="collapsible collapsible-accordion">
+					  <li>
+						<a class="collapsible-header">Dropdown<i class="material-icons">arrow_drop_down</i></a>
+						<div class="collapsible-body">
+						  <ul>
+							<li><a href="#!">First</a></li>
+							<li><a href="#!">Second</a></li>
+							<li><a href="#!">Third</a></li>
+							<li><a href="#!">Fourth</a></li>
+						  </ul>
+						</div>
+					  </li>
+					</ul>
+				  </li>
+
+				  <li class="no-padding">
+					<ul class="collapsible collapsible-accordion">
+					  <li>
+						<a class="collapsible-header">Dropdown<i class="material-icons">arrow_drop_down</i></a>
+						<div class="collapsible-body">
+						  <ul>
+							<li><a href="#!">First</a></li>
+							<li><a href="#!">Second</a></li>
+							<li><a href="#!">Third</a></li>
+							<li><a href="#!">Fourth</a></li>
+						  </ul>
+						</div>
+					  </li>
+					</ul>
+				  </li>
+
 			  </ul>
 
 			  
 
 			  <div class="" id="content">
 
-				<div class="preloader-wrapper big active">
-					<div class="spinner-layer spinner-blue-only">
-					  <div class="circle-clipper left">
-						<div class="circle"></div>
-					  </div><div class="gap-patch">
-						<div class="circle"></div>
-					  </div><div class="circle-clipper right">
-						<div class="circle"></div>
-					  </div>
-					</div>
-				  </div>
-
 			  </div>
+
+			  <div class="preloader-wrapper big active">
+				<div class="spinner-layer spinner-blue-only">
+				  <div class="circle-clipper left">
+					<div class="circle"></div>
+				  </div><div class="gap-patch">
+					<div class="circle"></div>
+				  </div><div class="circle-clipper right">
+					<div class="circle"></div>
+				  </div>
+				</div>
+			  </div>
+			  
 			{% block content %}{% endblock %}
 		</main>
 

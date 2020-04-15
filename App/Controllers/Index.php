@@ -13,7 +13,16 @@ class Index extends AbstractController
 
     public function test()
     {
+        sleep(5);
         $this->render('content.html');
+
+        return true;
+    }
+
+    public function test2()
+    {
+        sleep(5);
+        $this->render('TEST2');
 
         return true;
     }
