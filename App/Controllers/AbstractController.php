@@ -2,8 +2,8 @@
 
 namespace App\Controllers;
 
-$loader = new \Twig\Loader\FilesystemLoader(APP_DIR . '/views');
-$twig = new \Twig\Environment($loader);
+use Twig\Environment;
+use Twig\Loader\FilesystemLoader;
 
 class AbstractController
 {
@@ -11,8 +11,8 @@ class AbstractController
 
     function __construct()
     {
-        $loader = new \Twig\Loader\FilesystemLoader(APP_DIR . '/views');
-        $this->twig = new \Twig\Environment($loader);
+        $loader = new FilesystemLoader(APP_DIR . '/views');
+        $this->twig = new Environment($loader);
         $this->twig->addGlobal('caption', 'Тест');
 
         $this->getTopNav();
@@ -58,7 +58,7 @@ class AbstractController
         return $this->twig->load($name);
     }
 
-    protected function render(string $name, array $parametrs = [])
+    protected function render($name, array $parameters = [])
     {
         echo $this->twig->render($name, $parametrs);
     }

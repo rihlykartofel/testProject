@@ -31,6 +31,6 @@ class Index extends AbstractController
     {
         dd($string);
 
-        return true;
+//        return true;
     }
 }
