@@ -60,7 +60,7 @@ class AbstractController
 
     protected function render($name, array $parameters = [])
     {
-        echo $this->twig->render($name, $parametrs);
+        echo $this->twig->render($name, $parameters);
     }
     
 }
