@@ -13,7 +13,7 @@ class Index extends AbstractController
 
     public function test()
     {
-        sleep(5);
+        // sleep(5);
         $this->render('content.html');
 
         return true;

@@ -1,6 +1,15 @@
 nav {
-    background: #803a49;
+    height: 10vh;
+    background-color: #132413;
 }
+
+#content{
+    min-height: 90vh;
+    background: #535353;
+    
+}
+
+
 
 .brand-logo {
     /* margin-left: 5vw; */
