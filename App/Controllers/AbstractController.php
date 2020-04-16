@@ -8,9 +8,11 @@ use Twig\Loader\FilesystemLoader;
 class AbstractController
 {
     protected $twig;
+    
 
     function __construct()
     {
+        $i = 5;
         $loader = new FilesystemLoader(APP_DIR . '/views');
         $this->twig = new Environment($loader);
         $this->twig->addGlobal('caption', 'Тест');
